@@ -35,3 +35,11 @@ def user_mean(df):
 def movie_mean(df):
     '''Return a serie where each movie is associated with its mean'''
     return df.groupby('itemID').rating.mean()
+
+def predict_user(uid, users, mean):
+    '''Predict user mean based on the serie returned by user_mean'''
+    return users.get(uid, mean)
+
+def predict_movie(iid, movies, mean):
+    '''Predict movie mean based on the serie returned by movie_mean'''
+    return movies.get(iid, mean)
